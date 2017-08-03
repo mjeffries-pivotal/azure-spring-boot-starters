@@ -228,6 +228,8 @@
         <module>../common</module>
         <module>../spring-data-azure-documentdb</module>
         <module>../spring-data-azure-documentdb-sample</module>
+        <module>../azure-ad-spring-security-integrator-spring-boot-autoconfigure</module>
+        <module>../azure-ad-spring-security-integrator-spring-boot-starter</module>
         <module>../azure-documentdb-spring-boot-autoconfigure</module>
         <module>../azure-documentdb-spring-boot-autoconfigure-sample</module>
         <module>../azure-documentdb-spring-boot-starter</module>

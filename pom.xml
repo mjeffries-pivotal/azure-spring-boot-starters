@@ -52,6 +52,8 @@
 
         <bom.version>0.1.4</bom.version>
 
+        <azure.ad.starter.version>${bom.version}</azure.ad.starter.version>
+        <azure.ad.autoconfigure.version>${bom.version}</azure.ad.autoconfigure.version>
         <azure.documentdb.starter.version>${bom.version}</azure.documentdb.starter.version>
         <azure.documentdb.autoconfigure.version>${bom.version}</azure.documentdb.autoconfigure.version>
         <spring.data.documentdb.version>${bom.version}</spring.data.documentdb.version>
@@ -85,6 +87,16 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-ad-spring-security-integrator-spring-boot-autoconfigure</artifactId>
+                <version>${azure.ad.autoconfigure.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-ad-spring-security-integrator-spring-boot-starter</artifactId>
+                <version>${azure.ad.starter.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-documentdb-spring-boot-autoconfigure</artifactId>

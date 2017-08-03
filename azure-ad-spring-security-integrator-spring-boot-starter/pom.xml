@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>azure-spring-boot-starter-bom</artifactId>
+        <groupId>com.microsoft.azure</groupId>
+        <version>0.1.4</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>azure-ad-spring-security-integrator-starter</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Azure AD Spring Security Integrator Spring Boot Starter</name>
+    <description>Spring Boot Starter for Azure AD and Spring Security Integration</description>
+    <url>https://github.com/Microsoft/azure-spring-boot-starters</url>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/Microsoft/azure-spring-boot-starters/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>yaweiw</id>
+            <name>Yawei Wang</name>
+            <email>yaweiw@microsoft.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/Microsoft/azure-spring-boot-starters.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Microsoft/azure-spring-boot-starters.git</developerConnection>
+        <url>https://github.com/Microsoft/azure-spring-boot-starters/tree/master</url>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-ad-spring-security-integrator-autoconfigure</artifactId>
+        </dependency>
+    </dependencies>
+</project>
