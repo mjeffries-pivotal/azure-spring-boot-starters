@@ -11,7 +11,7 @@ environment:
 install:
   - cmd: copy "C:\Program Files (x86)\Apache\Maven\bin\mvn.cmd" "C:\Program Files (x86)\Apache\Maven\bin\mvn.bat"
   - cmd: dir "C:\Program Files\Azure Cosmos DB Emulator\CosmosDB.Emulator.exe"
-  - cmd: "C:\Program Files\Azure Cosmos DB Emulator\CosmosDB.Emulator.exe" /Port=8082
+  - cmd: call "C:\Program Files\Azure Cosmos DB Emulator\CosmosDB.Emulator.exe"
 
 build_script:
   - mvn clean install -P integration-test-emulator -B -V
