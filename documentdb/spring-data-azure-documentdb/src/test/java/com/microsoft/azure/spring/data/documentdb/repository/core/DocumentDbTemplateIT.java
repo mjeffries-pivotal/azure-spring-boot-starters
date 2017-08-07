@@ -16,16 +16,20 @@ import com.microsoft.azure.spring.data.documentdb.repository.domain.Person;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScanner;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.annotation.Persistent;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 @PropertySource(value = {"classpath:application.properties"})
 public class DocumentDbTemplateIT {
 
@@ -49,6 +53,7 @@ public class DocumentDbTemplateIT {
         documentDbUri = System.getProperty(DOCUMENTDB_URL_PROPERTY_NAME);
         documentDbKey = System.getProperty(DOCUMENTDB_KEY_PROPERTY_NAME);
 
+        assertThat(applicationContext).isNotNull();
         mappingContext = new DocumentDbMappingContext();
         try {
             mappingContext.setInitialEntitySet(new EntityScanner(this.applicationContext)
