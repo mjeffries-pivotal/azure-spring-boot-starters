@@ -2,7 +2,7 @@ image: Visual Studio 2015
 
 branches:
   only:
-    - master
+    - yungez-appveyor
 
 environment:
   JAVA_HOME: "C:\\Program Files\\Java\\jdk1.8.0"
@@ -10,8 +10,8 @@ environment:
 
 install:
   - cmd: copy "C:\Program Files (x86)\Apache\Maven\bin\mvn.cmd" "C:\Program Files (x86)\Apache\Maven\bin\mvn.bat"
-  - cmd: dir "C:\Program Files\Azure Cosmos DB Emulator\CosmosDB.Emulator.exe"
-  - cmd: call "C:\Program Files\Azure Cosmos DB Emulator\CosmosDB.Emulator.exe"
+  - ps: >-
+      "${env:ProgramFiles}\DocumentDB Emulator\DocumentDB.Emulator.exe"
 
 build_script:
   - mvn clean install -P integration-test-emulator -B -V
