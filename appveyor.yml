@@ -10,8 +10,23 @@ environment:
 
 install:
   - cmd: copy "C:\Program Files (x86)\Apache\Maven\bin\mvn.cmd" "C:\Program Files (x86)\Apache\Maven\bin\mvn.bat"
-  - ps: >-
-      "${env:ProgramFiles}\DocumentDB Emulator\DocumentDB.Emulator.exe"
+  - cmd: net share "c=c:"
+  # 1. starter docker
+  - ps: Start-Process "C:\Program Files\Docker\dockerd.exe"
+  # 2. starter emulator
+  - cmd: docker pull microsoft/azure-cosmosdb-emulator
+  - cmd: md %LOCALAPPDATA%\CosmosDBEmulatorCert 2>nul
+  - cmd: docker run -d -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i microsoft/azure-cosmosdb-emulator
+  - cmd: timeout 250
+  # 3. import cert
+  - ps: cd C:\Users\appveyor\AppData\Local\CosmosDBEmulatorCert; .\importcert.ps1
+  # 4. export cert to java cert store
+  - ps: Get-ChildItem cert:\LocalMachine\My | Format-Table Thumbprint, FriendlyName
+  # export cert to Java cert store
+  - ps: $cert = Get-ChildItem  cert:\LocalMachine\my | Where-Object { $_.FriendlyName -eq "DocumentDbEmulatorCertificate"}; export-Certificate -filepath c:\documentdb.cer -cert ${cert} -type CERT -NoClobber
+  - cmd: cd "C:\Program Files\Java\jdk1.8.0\jre\lib\security"
+  - cmd: certutil -encode c:\documentdb.cer documentemulatordb.cer
+  - cmd: keytool -keystore cacerts -importcert -alias documentdbeumlatorcert -file .\documentemulatordb.cer -storepass changeit -trustcacerts -noprompt
 
 build_script:
   - mvn clean install -P integration-test-emulator -B -V
