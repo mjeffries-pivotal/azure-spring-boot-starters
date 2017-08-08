@@ -27,6 +27,7 @@ install:
   - cmd: cd "C:\Program Files\Java\jdk1.8.0\jre\lib\security"
   - cmd: certutil -encode c:\documentdb.cer documentemulatordb.cer
   - cmd: keytool -keystore cacerts -importcert -alias documentdbeumlatorcert -file .\documentemulatordb.cer -storepass changeit -trustcacerts -noprompt
+  - cmd: cd "C:\projects\azure-spring-boot-starters"
 
 build_script:
   - mvn -P integration-test-emulator clean install -B -V
