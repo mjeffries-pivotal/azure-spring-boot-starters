@@ -29,4 +29,4 @@ install:
   - cmd: keytool -keystore cacerts -importcert -alias documentdbeumlatorcert -file .\documentemulatordb.cer -storepass changeit -trustcacerts -noprompt
 
 build_script:
-  - mvn clean install -P integration-test-emulator -B -V
+  - mvn -P integration-test-emulator clean install -B -V
